@@ -3,8 +3,9 @@ const router = express.Router()
 const jwt = require('jsonwebtoken')
 const User = require('../Models/user')
 const bcrypt = require('bcrypt')
+const mongoose = require('mongoose')
 
-router.post('/login', async (req, res) => {
+router.post('/auth/login', async (req, res, next) => {
     const currentUser = User.findOne({username: req.body.email})
 
     if (currentUser) {
@@ -39,7 +40,8 @@ router.post('/login', async (req, res) => {
     }
 })
 
-router.post('/register', async (req, res) => {
+router.post('/auth/register', async (req, res, next) => {
+    
     const potentialConflict = await mongoose.findOne({email: req.body.email})
 
     if (potentialConflict) {
@@ -73,4 +75,5 @@ router.post('/register', async (req, res) => {
         })
     }
 })
+
 module.exports = router

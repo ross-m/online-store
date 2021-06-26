@@ -7,16 +7,13 @@ const db_url = process.env.DB_URL
 const authRoute = require('./Routes/authentication')
 
 
-
 mongoose.connect(db_url, {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => {console.log("connected to database!")})
 .catch((err) => console.log(err))
 
-
-app.use(authRoute)
+app.use('/auth',authRoute)
 
 
 app.listen(port, () => {
     console.log("user connected")
-}
-)
+})

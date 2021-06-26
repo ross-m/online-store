@@ -3,9 +3,9 @@ const { string } = require('yargs')
 const schema = mongoose.Schema
 
 const UserSchema = new schema({
-    email: string,
-    password: string,
-    isAdmin: boolean
+    email: {type: 'string', required: true},
+    password: {type: 'string', required: true},
+    isAdmin: {type: Boolean}
 })
 
 const User = mongoose.model('User',UserSchema)

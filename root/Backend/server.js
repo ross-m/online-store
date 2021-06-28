@@ -11,6 +11,7 @@ mongoose.connect(db_url, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => {console.log("connected to database!")})
     .catch((err) => console.log(err))
 
+app.use(express.json())
 app.use('/auth', authRoute)
 
 app.listen(port, () => {

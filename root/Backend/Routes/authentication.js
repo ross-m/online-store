@@ -6,42 +6,41 @@ const mongoose = require('mongoose')
 
 router.post('/login', async (req, res, next) => {
     try {
-        const currentUser = User.findOne({username: req.body.email})
-
+        const currentUser = await User.findOne({email: req.body.email})
+        
         if (currentUser) {
 
-            bcrypt.compare(req.body.password, currentUser.password, function(err, res) {
+            const result = await bcrypt.compare(req.body.password, currentUser.password)
 
-                if (res) {
+            if(result) {
 
-                    const Token = jwt.sign(
-                        {
-                        email: currentUser.email
-                        },
-                        process.env.AUTH_KEY,
-                        {
-                            expiresIn: '1h'
-                        }
-                    )
+                const Token = jwt.sign(
+                    {
+                        email: currentUser
+                    }, 
+                    process.env.AUTH_KEY,
+                    {
+                        expiresIn: "1h"
+                    }
+                );
 
-                    return res.status(200).json({message: "Login succesful!", token: Token})
+                return res.status(200).json({message: "User succesfully logged in!", token: Token})
 
-                }   else {
-
-                        return res.status(401).json({error: err})
-
-                }
-            })
+            }   else {
+                    return res.status(404).json({error: "Incorrect password"})
+            }
 
         }   else {
-
-            return res.status(404).json({error: "Could not find user with that email."})
-
+                return res.status(404).json({error: "Can't find any user with that email..."})
         }
+
     }   catch(err) {
-        console.log(err)
+            console.log(err)
+            return res.status(500).json({error: "Something went wrong"})
     }
 })
+
+
 
 router.post('/register', async (req, res, next) => {
     try {
@@ -61,25 +60,26 @@ router.post('/register', async (req, res, next) => {
 
                 }   else {
 
-                    const newUser = new User({
-                        email: req.body.email,
-                        password: hash,
-                        isAdmin: false
-                    })
+                        const newUser = new User({
+                            email: req.body.email,
+                            password: hash,
+                            isAdmin: false
+                        })
 
-                    await newUser.save()
-                        .then(() => {
-                            return res.status(200).json({message: "User has been registered!"})
-                        })
-                        .catch((err) => {
-                            return res.status(500).json({error: "Error registering user..."})
-                        })
+                        await newUser.save()
+                            .then(() => {
+                                return res.status(200).json({message: "User has been registered!"})
+                            })
+                            .catch((err) => {
+                                return res.status(500).json({error: "Error registering user..."})
+                            })
                 }
             })
         }
+
     }   catch(err) {
-        console.log(err)
-    }
+            console.log(err)
+        }
 })
 
 module.exports = router

@@ -2,7 +2,10 @@ const router = require('express').Router()
 const jwt = require('jsonwebtoken')
 const User = require('../Models/user')
 const bcrypt = require('bcrypt')
-const mongoose = require('mongoose')
+const ipfilter = require('express-ipfilter').IpFilter
+const IpDeniedError = require('express-ipfilter').IpDeniedError
+
+
 
 router.post('/login', async (req, res, next) => {
     try {
@@ -81,5 +84,30 @@ router.post('/register', async (req, res, next) => {
             console.log(err)
         }
 })
+
+
+
+router.post('/admin', ipfilter(process.env.admins), (req, res, next) => {
+    console.log('hello')
+    return res.status(200).json({message: "we have entered the admin page"})
+})
+
+
+
+router.use((err, req, res, next) => {
+
+    if (err instanceof IpDeniedError) {
+
+      return res.status(401).json({error: "You are not authorized to access this resource"})
+
+    } else {
+
+      return res.status(500).json({error: "Error logging in..."})
+
+    }
+
+})
+
+
 
 module.exports = router

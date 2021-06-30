@@ -74,13 +74,16 @@ router.post('/register', async (req, res, next) => {
                             isAdmin: false
                         })
 
-                        await newUser.save()
-                            .then(() => {
+                        try {
+
+                                await newUser.save()
                                 return res.status(200).json({message: "User has been registered!"})
-                            })
-                            .catch((err) => {
-                                return res.status(500).json({error: "Error registering user..."})
-                            })
+
+                        }   catch {
+
+                                return res.status(500).json({error: "Internal error"})
+                                
+                        }
                 }
             })
         }
@@ -107,7 +110,7 @@ router.post('/admin', ipfilter([process.env.admin], {mode: 'allow'}), async (req
                             email: currentUser,
                             isAdmin: currentUser.isAdmin
                         }, 
-                        process.env.AUTH_KEY,
+                        process.env.ADMIN_KEY,
                         {
                             expiresIn: "1h"
                         }
@@ -144,7 +147,7 @@ router.use((err, req, res, next) => {
 
     } else {
         
-        return res.status(500).json({error: "Error logging in..."})
+        return res.status(500).json({error: "Internal error"})
 
     }
 

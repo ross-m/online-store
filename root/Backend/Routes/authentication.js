@@ -8,6 +8,7 @@ const IpDeniedError = require('express-ipfilter').IpDeniedError
 
 
 router.post('/login', async (req, res, next) => {
+
     try {
         const currentUser = await User.findOne({email: req.body.email})
         
@@ -51,6 +52,7 @@ router.post('/login', async (req, res, next) => {
 
 
 router.post('/register', async (req, res, next) => {
+
     try {
         const potentialConflict = await User.findOne({email: req.body.email})
         
@@ -98,6 +100,7 @@ router.post('/register', async (req, res, next) => {
 
 
 router.post('/admin', ipfilter([process.env.admin], {mode: 'allow'}), async (req, res, next) => {
+    
     try {
         const attemptedAdmin = await User.findOne({email: req.body.email})
 

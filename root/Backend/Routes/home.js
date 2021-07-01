@@ -3,6 +3,7 @@ const router = express.Router()
 const Promotion = require('../Models/promotion')
 
 router.get('/', async (req, res, next) => {
+    
     const ads = await Promotion.find()
 
     if (ads) { 

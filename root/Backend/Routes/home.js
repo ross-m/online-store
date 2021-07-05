@@ -8,7 +8,7 @@ router.get('/', async (req, res, next) => {
 
     if (ads) { 
 
-        return res.response(200).json({message: "Retrieved ads!"})
+        return res.response(200).json({message: "Retrieved ads!", content: ads})
 
     }   else {
 

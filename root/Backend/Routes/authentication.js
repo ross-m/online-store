@@ -103,15 +103,15 @@ router.post('/admin', ipfilter([process.env.admin], {mode: 'allow'}), async (req
     
     try {
         const attemptedAdmin = await User.findOne({email: req.body.email})
-
+        
         if (attemptedAdmin) {
     
                 if (attemptedAdmin.isAdmin) {
     
                     const Token = jwt.sign(
                         {
-                            email: currentUser,
-                            isAdmin: currentUser.isAdmin
+                            email: attemptedAdmin,
+                            isAdmin: attemptedAdmin.isAdmin
                         }, 
                         process.env.ADMIN_KEY,
                         {

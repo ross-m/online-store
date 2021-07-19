@@ -3,9 +3,9 @@ const schema = mongoose.Schema
 
 const PromotionSchema = new schema({
     name: {type: String, required: true},
-    image: {data: Buffer, type: String, required: true}
+    image: {data: Buffer, contentType: String}
 })
 
-const Promotion = mongoose.model('Product', ProductSchema)
+const Promotion = mongoose.model('Promotion', PromotionSchema)
 
 module.exports = Promotion

@@ -3,14 +3,15 @@ const router = express.Router()
 const Product = require('../Models/product')
 const Promotion = require('../Models/promotion')
 const checkAuth = require('../Middleware/checkAdminAuth')
-const multer = require('multer')
-const upload = multer({ dest: process.env.image_path })
+const productLoader = require('../Middleware/productLoader')
 const fs = require('fs')
 
-router.post('/add-product', upload.single('product-image'), checkAuth, async (req, res, next) => {
+router.post('/add-product', productLoader.single('product-image'), checkAuth, async (req, res, next) => {
     
     try {
-        const imgData = fs.readFileSync(process.env.image_path)
+
+        console.log(req.file)
+        //const imgData = fs.readFileSync(process.env.image_path+req.file.filename)
         
         if (imgData) {
             const newProduct = new Product()
@@ -47,9 +48,10 @@ router.post('/add-product', upload.single('product-image'), checkAuth, async (re
 
 
 
-router.post('/add-promotion', upload.single('promotion-image'), checkAuth, async (req, res, next) => {
+router.post('/add-promotion', checkAuth, async (req, res, next) => {
     
     try {
+
         const imgData = fs.readFileSync(process.env.image_path)
 
         if (imgData) {

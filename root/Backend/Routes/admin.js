@@ -10,17 +10,17 @@ router.post('/add-product', productLoader.single('product-image'), checkAuth, as
     
     try {
 
-        console.log(req.file)
-        //const imgData = fs.readFileSync(process.env.image_path+req.file.filename)
+        const imgData = fs.readFileSync(process.env.image_path+req.file.filename)
         
         if (imgData) {
-            const newProduct = new Product()
-            newProduct.name = req.body.name,
-            newProduct.description = req.body.description,
-            newProduct.category = req.body.category,
-            newProduct.price = req.body.price
-            newProduct.image.data = imgData
-            newProduct.image.contentType = req.body.contentType
+            const newProduct = new Product({
+                name: req.body.name,
+                description: req.body.description,
+                category: req.body.category,
+                price: req.body.price,
+                image: imgData,
+                imgType: req.file.mimetype
+            })
             
             try {
     
@@ -40,7 +40,7 @@ router.post('/add-product', productLoader.single('product-image'), checkAuth, as
         }
         
     }   catch (err) {
-
+            
             return res.status(500).json({error: "Internal error"})
 
     }
@@ -55,6 +55,7 @@ router.post('/add-promotion', checkAuth, async (req, res, next) => {
         const imgData = fs.readFileSync(process.env.image_path)
 
         if (imgData) {
+
             const newPromotion = new Product()
             newPromotion.name = req.body.name,
             newPromotion.description = req.body.description,

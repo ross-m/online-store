@@ -10,7 +10,6 @@ const checkAdminAuth = function(req, res, next) {
 
     }   catch (err) {
 
-            console.log(req.headers.authorization)
             return res.status(500).json({error: "Rejected"})
 
     }

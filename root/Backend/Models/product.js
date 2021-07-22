@@ -6,7 +6,8 @@ const ProductSchema = new schema({
     description: {type: String, required: true},
     category: {type: String, required: true},
     price: {type: String, required: true},
-    image: {type: String, contentType: String}
+    image: {type: Buffer},
+    imgType: {type: String}
 })
 
 const Product = mongoose.model('Product', ProductSchema)

@@ -4,13 +4,14 @@ const Product = require('../Models/product')
 const Promotion = require('../Models/promotion')
 const checkAuth = require('../Middleware/checkAdminAuth')
 const productLoader = require('../Middleware/productLoader')
+const promotionLoader = require('../Middleware/promotionLoader')
 const fs = require('fs')
 
-router.post('/add-product', productLoader.single('product-image'), checkAuth, async (req, res, next) => {
+router.post('/add-product', checkAuth, productLoader.single('product-image'), async (req, res, next) => {
     
     try {
 
-        const imgData = fs.readFileSync(process.env.image_path+req.file.filename)
+        const imgData = fs.readFileSync(process.env.image_path+'Products/'+req.file.filename)
         
         if (imgData) {
             const newProduct = new Product({
@@ -48,7 +49,7 @@ router.post('/add-product', productLoader.single('product-image'), checkAuth, as
 
 
 
-router.post('/add-promotion', checkAuth, async (req, res, next) => {
+router.post('/add-promotion', checkAuth, promotionLoader.single('promotion-image'), async (req, res, next) => {
     
     try {
 

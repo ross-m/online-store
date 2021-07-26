@@ -5,7 +5,7 @@ const engine = multer.diskStorage({
 
     destination: function (req, file, cb) {
 
-        cb(null, process.env.image_path+'Products/')
+        cb(null, process.env.image_path+'Promotions/')
 
     },
 
@@ -18,7 +18,7 @@ const engine = multer.diskStorage({
 })
 
 
-const productLoader = multer({ 
+const promotionLoader = multer({ 
 
     storage: engine,
 
@@ -42,4 +42,4 @@ const productLoader = multer({
 
 })
 
-module.exports = productLoader
+module.exports = promotionLoader

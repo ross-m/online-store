@@ -3,7 +3,7 @@ const schema = mongoose.Schema
 
 const PromotionSchema = new schema({
     name: {type: String, required: true},
-    image: {data: Buffer, contentType: String}
+    image: {type: Buffer}
 })
 
 const Promotion = mongoose.model('Promotion', PromotionSchema)

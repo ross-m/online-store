@@ -1,26 +1,7 @@
 const multer = require('multer')
 const path = require('path')
 
-const engine = multer.diskStorage({
-
-    destination: function (req, file, cb) {
-
-        cb(null, process.env.image_path+'Promotions/')
-
-    },
-
-    filename: function (req, file, cb) {
-
-        cb(null, file.originalname)
-
-    }
-
-})
-
-
 const promotionLoader = multer({ 
-
-    storage: engine,
 
     fileFilter: function (req, file, cb) {
         
@@ -38,7 +19,9 @@ const promotionLoader = multer({
             return cb(null, true)
 
         }
-    } 
+    },
+
+    limits: {fileSize: 1000000, files: 1}
 
 })
 

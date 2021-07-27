@@ -5,37 +5,26 @@ const Promotion = require('../Models/promotion')
 const checkAuth = require('../Middleware/checkAdminAuth')
 const productLoader = require('../Middleware/productLoader')
 const promotionLoader = require('../Middleware/promotionLoader')
-const fs = require('fs')
 
 router.post('/add-product', checkAuth, productLoader.single('product-image'), async (req, res, next) => {
     
     try {
-
-        const imgData = fs.readFileSync(process.env.image_path+'Products/'+req.file.filename)
         
-        if (imgData) {
-            const newProduct = new Product({
-                name: req.body.name,
-                description: req.body.description,
-                category: req.body.category,
-                price: req.body.price,
-                image: imgData,
-                imgType: req.file.mimetype
-            })
-            
-            try {
-    
-                await newProduct.save()
-                return res.status(200).json({message: "Succesfully saved product!"})
-    
-            }   catch (err) {
-    
-                    return res.status(500).json({error: "Internal error"})
-    
-            }
+        const newProduct = new Product({
+            name: req.body.name,
+            description: req.body.description,
+            category: req.body.category,
+            price: req.body.price,
+            image: req.file.buffer
+        })
+        
+        try {
 
-        }   else    {
+            await newProduct.save()
+            return res.status(200).json({message: "Succesfully saved product!"})
 
+        }   catch (err) {
+                
                 return res.status(500).json({error: "Internal error"})
 
         }
@@ -52,31 +41,18 @@ router.post('/add-product', checkAuth, productLoader.single('product-image'), as
 router.post('/add-promotion', checkAuth, promotionLoader.single('promotion-image'), async (req, res, next) => {
     
     try {
+        
+        const newPromotion = new Promotion({
+            name: req.body.name,
+            image: req.file.buffer
+        })
 
-        const imgData = fs.readFileSync(process.env.image_path)
+        try {
 
-        if (imgData) {
+            await newPromotion.save()
+            return res.status(200).json({message: "Promotion successfully uploaded!"})
 
-            const newPromotion = new Product()
-            newPromotion.name = req.body.name,
-            newPromotion.description = req.body.description,
-            newPromotion.category = req.body.category,
-            newPromotion.price = req.body.price
-            newPromotion.image.data = imgData
-            newPromotion.image.contentType = req.body.contentType
-    
-            try {
-    
-                await newPromotion.save()
-                return res.status(200).json({message: "Promotion successfully uploaded!"})
-    
-            }   catch {
-    
-                return res.status(500).json({error: "Internal error"})
-    
-            }
-
-        }   else {
+        }   catch {
 
             return res.status(500).json({error: "Internal error"})
 

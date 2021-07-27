@@ -1,31 +1,12 @@
 const multer = require('multer')
 const path = require('path')
 
-const engine = multer.diskStorage({
-
-    destination: function (req, file, cb) {
-
-        cb(null, process.env.image_path+'Products/')
-
-    },
-
-    filename: function (req, file, cb) {
-
-        cb(null, file.originalname)
-
-    }
-
-})
-
-
 const productLoader = multer({ 
-
-    storage: engine,
 
     fileFilter: function (req, file, cb) {
         
-        var type = path.extname(file.originalname)
-
+        var type = String(path.extname(file.originalname))
+        
         if(type != '.jpg' && type != '.png' && type != '.jpeg') {
             
             req.file_error = "Unsupported file type"
@@ -38,7 +19,9 @@ const productLoader = multer({
             return cb(null, true)
 
         }
-    } 
+    },
+
+    limits: {fileSize: 1000000, files: 1}
 
 })
 

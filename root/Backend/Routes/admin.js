@@ -5,8 +5,9 @@ const Promotion = require('../Models/promotion')
 const checkAuth = require('../Middleware/checkAdminAuth')
 const productLoader = require('../Middleware/productLoader')
 const promotionLoader = require('../Middleware/promotionLoader')
+const checkProduct = require('../Middleware/checkProductType')
 
-router.post('/add-product', checkAuth, productLoader.single('product-image'), async (req, res, next) => {
+router.post('/add-product', checkAuth, productLoader.single('product-image'), checkProduct, async (req, res, next) => {
     
     try {
         

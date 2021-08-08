@@ -1,14 +1,14 @@
 import React from "react"
-import {Navbar, NavDropdown, Container, Nav, Table, Button, Col} from "react-bootstrap"
-
+import {Navbar, NavDropdown, Container, Nav, Table, Col, Dropdown} from "react-bootstrap"
+import trees from "../trees.svg"
 function Home() {
     return (
         <Navbar bg="light" expand="lg">
             <Container>
-                <Col xs={1}>
-                    <Navbar.Brand href="#home">E-Shop</Navbar.Brand>
+                <Col xs={0} fluid="true">
+                    <img src={trees} height={70} alt="some trees"></img>
                 </Col>
-                <Col sm={10}>
+                <Col sm={4}>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
@@ -46,7 +46,7 @@ function Home() {
                                             <td><Nav.Link href="#Womens/Shorts">Shorts</Nav.Link></td>
                                         </tr>
                                         <tr>
-                                            <td><Nav.Link href="#Womens/Hoodies">Sweaters</Nav.Link></td>
+                                            <td><Nav.Link href="#Womens/Sweaters">Sweaters</Nav.Link></td>
                                             <td><Nav.Link href="#Womens/Pants">Pants</Nav.Link></td>
                                         </tr>
                                     </tbody>
@@ -55,8 +55,21 @@ function Home() {
                     </Nav>
                     </Navbar.Collapse>
                 </Col>
+                <Col sm={5}>
+                    <Navbar.Brand href="#home"> E-Store </Navbar.Brand>
+                </Col>
                 <Col>
-                    <Button variant="primary">Primary</Button>{' '}
+                    <Dropdown>
+                        <Dropdown.Toggle variant="success" id="dropdown-basic">
+                            Dropdown Button
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu>
+                            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
                 </Col>
             </Container>
         </Navbar>

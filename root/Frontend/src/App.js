@@ -5,15 +5,19 @@ import {
   Route
 } from "react-router-dom"
 import Home from "./Components/home.js"
+import ProvideAuth from "./State Management/auth.js"
+
 
 export default function App() {
   return (
-    <Router>
-        <Switch>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-    </Router>
+    <ProvideAuth>
+      <Router>
+          <Switch>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+      </Router>
+    </ProvideAuth>
   );
 }

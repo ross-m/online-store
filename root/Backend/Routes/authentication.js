@@ -1,4 +1,5 @@
 const router = require('express').Router()
+const passport = require('passport')
 const jwt = require('jsonwebtoken')
 const User = require('../Models/user')
 const bcrypt = require('bcrypt')
@@ -7,47 +8,7 @@ const IpDeniedError = require('express-ipfilter').IpDeniedError
 
 
 
-router.post('/login', async (req, res, next) => {
-
-    try {
-        const currentUser = await User.findOne({email: req.body.email})
-        
-        if (currentUser) {
-
-            const result = await bcrypt.compare(req.body.password, currentUser.password)
-
-            if(result) {
-
-                const Token = jwt.sign(
-                    {
-                        email: currentUser
-                    }, 
-                    process.env.AUTH_KEY,
-                    {
-                        expiresIn: "1h"
-                    }
-                );
-
-                return res.status(200).json({message: "User succesfully logged in!", token: Token})
-
-            }   else {
-
-                    return res.status(404).json({error: "Incorrect password"})
-                    
-            }
-
-        }   else {
-
-                return res.status(404).json({error: "Can't find any user with that email..."})
-
-        }
-
-    }   catch(err) {
-
-            return res.status(500).json({error: "Internal error"})
-
-    }
-})
+router.post('/login', passport.authenticate('local'))
 
 
 

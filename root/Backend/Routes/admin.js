@@ -2,12 +2,11 @@ const express = require('express')
 const router = express.Router()
 const Product = require('../Models/product')
 const Promotion = require('../Models/promotion')
-const checkAuth = require('../Middleware/checkAdminAuth')
 const productLoader = require('../Middleware/productLoader')
 const promotionLoader = require('../Middleware/promotionLoader')
 const checkProduct = require('../Middleware/checkProductType')
 
-router.post('/add-product', checkAuth, productLoader.single('product-image'), checkProduct, async (req, res, next) => {
+router.post('/add-product', productLoader.single('product-image'), checkProduct, async (req, res, next) => {
     
     try {
         
@@ -39,7 +38,7 @@ router.post('/add-product', checkAuth, productLoader.single('product-image'), ch
 
 
 
-router.post('/add-promotion', checkAuth, promotionLoader.single('promotion-image'), async (req, res, next) => {
+router.post('/add-promotion', promotionLoader.single('promotion-image'), async (req, res, next) => {
     
     try {
         

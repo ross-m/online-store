@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const { string } = require('yargs')
 const schema = mongoose.Schema
 
 const UserSchema = new schema({

@@ -5,10 +5,10 @@ const Promotion = require('../Models/promotion')
 
 
 
-router.get('/', passport.authenticate('local'), async (req, res, next) => {
+router.get('/', async (req, res, next) => {
     
     const ads = await Promotion.find()
-    console.log(req.user.username)
+   
     if (ads) { 
 
         return res.status(200).json({message: "Retrieved ads!", content: ads})

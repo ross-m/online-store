@@ -3,8 +3,22 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const MongoStore = require('connect-mongo')
 const User = require('./Models/user')
+const bcrypt = require('bcrypt')
 
 module.exports = (app) => {
+    async function verifyPassword(user, password) {
+        try {
+            var result = await bcrypt.compare(password, user.password)
+           
+            return result
+
+        }   catch(err) {
+
+            return false
+
+        }
+    }
+
     app.use(session({ 
         secret:"dogs",
         resave: false,
@@ -23,16 +37,16 @@ module.exports = (app) => {
         },
     
         async function(email, password, done) {
-            console.log('hello')
+           
             await User.findOne({email: email}, function(err, user) {
-                console.log(user)
+                
                 if (err) { return done(err) }
     
                 if (!user) {
                     return done(null, false, { message: 'Incorrect username.'})
                 }
     
-                if (!user.validPassword(password)) {
+                if (!verifyPassword(user, password)) {
                     return done(null, false, { message: 'Incorrect password' })
                 }
     
@@ -46,8 +60,8 @@ module.exports = (app) => {
         done(null, user.email)
     })
     
-    passport.deserializeUser(function(user, done) {
-        User.findone({email: user.email}, function(err, user) {
+    passport.deserializeUser(async function(user, done) {
+        await User.findOne({email: user.email}, function(err, user) {
             done(err, user)
         })
     })

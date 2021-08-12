@@ -58,12 +58,11 @@ module.exports = (app) => {
     ))
     
     passport.serializeUser(function(user, done) {
-        console.log('serialize')
+        console.log(session)
         done(null, user.email)
     })
     
     passport.deserializeUser(async function(email, done) {
-        console.log('deserialize')
         await User.findOne({email: email}, function(err, user) {
             done(err, user)
         })

@@ -2,10 +2,10 @@ const express = require('express')
 const passport = require('passport')
 const router = express.Router()
 const Promotion = require('../Models/promotion')
+const gateKeep = require('../Middleware/auth')
 
 
-
-router.get('/', passport.authenticate('local'), async (req, res, next) => {
+router.get('/', gateKeep, async (req, res, next) => {
     
     const ads = await Promotion.find()
    
@@ -23,7 +23,7 @@ router.get('/', passport.authenticate('local'), async (req, res, next) => {
 
 
 
-router.get('/Mens', async (req, res, next) => {
+router.get('/Mens', gateKeep, async (req, res, next) => {
     
     const hits = await Promotion.find({category: /Mens/})
 

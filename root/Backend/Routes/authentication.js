@@ -5,10 +5,29 @@ const User = require('../Models/user')
 const bcrypt = require('bcrypt')
 const ipfilter = require('express-ipfilter').IpFilter
 const IpDeniedError = require('express-ipfilter').IpDeniedError
+const gateKeep = require('../Middleware/auth')
+
+
+router.post('/login', passport.authenticate('local'), (req, res, next) => {
+    return res.status(200).json({message: "Login succesful"})
+})
 
 
 
-router.post('/login', passport.authenticate('local'))
+router.post('/logout', gateKeep, (req, res, next) => {
+    try{
+
+        req.session.destroy(function(err) {
+            return res.status(200).json({ message: "Logout succesful"} )
+        })
+
+    }   catch(err) {
+
+        console.log(err)
+        return res.status(500).json({ error: "Internal error"} )
+   
+    }
+})
 
 
 

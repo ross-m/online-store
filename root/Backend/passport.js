@@ -28,7 +28,8 @@ module.exports = (app) => {
             crypto: {secret: 'squirrel'},
             autoRemove: 'interval',
             autoRemoveInterval: 60 * 24
-        })
+        }),
+        expires: 60 * 60
     }))
     
     passport.use(new LocalStrategy({
@@ -37,7 +38,7 @@ module.exports = (app) => {
         },
     
         async function(email, password, done) {
-           
+            
             await User.findOne({email: email}, function(err, user) {
                 
                 if (err) { return done(err) }
@@ -57,11 +58,13 @@ module.exports = (app) => {
     ))
     
     passport.serializeUser(function(user, done) {
+        console.log('serialize')
         done(null, user.email)
     })
     
-    passport.deserializeUser(async function(user, done) {
-        await User.findOne({email: user.email}, function(err, user) {
+    passport.deserializeUser(async function(email, done) {
+        console.log('deserialize')
+        await User.findOne({email: email}, function(err, user) {
             done(err, user)
         })
     })

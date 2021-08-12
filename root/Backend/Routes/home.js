@@ -5,7 +5,7 @@ const Promotion = require('../Models/promotion')
 
 
 
-router.get('/', async (req, res, next) => {
+router.get('/', passport.authenticate('local'), async (req, res, next) => {
     
     const ads = await Promotion.find()
    

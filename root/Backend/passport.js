@@ -58,7 +58,6 @@ module.exports = (app) => {
     ))
     
     passport.serializeUser(function(user, done) {
-        console.log(session)
         done(null, user.email)
     })
     

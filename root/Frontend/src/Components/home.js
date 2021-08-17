@@ -7,9 +7,6 @@ import { Login } from "./login"
 function Home() {
     let auth = useAuth()
     const [show, setShow] = useState(false);
-  
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
     return !auth.user ? (
         <Navbar bg="light" expand="lg">
@@ -146,6 +143,7 @@ function Home() {
 
                         <Dropdown.Menu>
                             <Dropdown.Item href="#/action-1">Cart </Dropdown.Item>
+                            <Dropdown.Item onClick={auth.logOut}>Logout </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                 </Col>

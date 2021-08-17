@@ -11,12 +11,10 @@ function useProvideAuth()  {
 
     const logIn = cb => {
       setUser(1)
-      cb()
     }
 
     const logOut = cb => {
       setUser(null)
-      cb()
     }
 
     return {

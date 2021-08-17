@@ -5,7 +5,7 @@ import {
   Route
 } from "react-router-dom"
 import Home from "./Components/home.js"
-import {ProvideAuth, useAuth} from "./State Management/auth.js"
+import { ProvideAuth } from "./State Management/auth.js"
 
 
 export default function App() {

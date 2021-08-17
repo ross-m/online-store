@@ -7,7 +7,7 @@ export function useAuth() {
 }
 
 function useProvideAuth()  {
-    const [user, setUser] = useState(0)
+    const [user, setUser] = useState(null)
 
     const logIn = cb => {
       setUser(1)
@@ -15,7 +15,7 @@ function useProvideAuth()  {
     }
 
     const logOut = cb => {
-      setUser(0)
+      setUser(null)
       cb()
     }
 

@@ -1,11 +1,16 @@
-import React from "react"
+import { React, useState } from "react"
 import {Navbar, NavDropdown, Container, Nav, Table, Col, Dropdown} from "react-bootstrap"
 import trees from "../trees.svg"
 import { useAuth } from "../State Management/auth"
+import { Login } from "./login"
 
 function Home() {
     let auth = useAuth()
-    console.log(auth.user)
+    const [show, setShow] = useState(false);
+  
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     return !auth.user ? (
         <Navbar bg="light" expand="lg">
             <Container>
@@ -69,7 +74,8 @@ function Home() {
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
-                            <Dropdown.Item href="#/action-2">Login </Dropdown.Item>
+                            <Dropdown.Item onClick={() => setShow(true)}> Login </Dropdown.Item>
+                            <Login show={show} onHide={() => setShow(false)}></Login>
                             <Dropdown.Item href="#/action-3">Register </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>

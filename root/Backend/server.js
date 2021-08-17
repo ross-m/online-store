@@ -7,17 +7,19 @@ const db_url = process.env.DB_URL
 const authRoute = require('./Routes/authentication')
 const adminRoute = require('./Routes/admin')
 const homeRoute = require('./Routes/home')
-
+const cors = require('cors')
 
 mongoose.connect(db_url, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => {console.log("connected to database!")})
     .catch((err) => console.log(err))
 
 require('./passport')(app)
+app.use(cors())
 app.use(express.json())
 app.use('/auth', authRoute)
 app.use('/admin', adminRoute)
 app.use('/', homeRoute)
+
 
 app.listen(port, () => {
     console.log("user connected")

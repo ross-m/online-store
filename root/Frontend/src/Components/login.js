@@ -1,12 +1,32 @@
 import { Button, Modal, Form } from "react-bootstrap"
 import { useAuth } from "../State Management/auth";
+import axios from "axios"
+import { useRef } from "react"
 
 export function Login(props) {
     let auth = useAuth()
+    let emailRef = useRef()
+    let pwRef = useRef()
 
-    function signIn() {
-        auth.logIn()
-        props.onHide()
+    async function signIn() {
+        await axios.post('http://localhost:5000/auth/login',
+            {
+                email: emailRef.current.value,
+                password: pwRef.current.value
+            }
+        )
+        .then(response => {
+            if (response.status === 200) {
+                auth.logIn()
+                props.onHide()
+            }   else (
+                    auth.logOut()
+            )
+        })
+        .catch(err => {
+            alert(err)
+            auth.logOut()
+        })
     }
 
     return (
@@ -20,12 +40,12 @@ export function Login(props) {
             <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
+                    <Form.Control type="text" ref={emailRef} required/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Control type="text" ref={pwRef} required />
                 </Form.Group>
             </Form>
           </Modal.Body>

@@ -45,7 +45,7 @@ export function Login(props) {
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="text" ref={pwRef} required />
+                    <Form.Control type="password" ref={pwRef} required />
                 </Form.Group>
             </Form>
           </Modal.Body>

@@ -5,14 +5,13 @@ import { useAuth } from "../State Management/auth"
 import { Login } from "./login"
 import axios from "axios"
 
-axios.defaults.withCredentials = true
 
 function Home() {
     let auth = useAuth()
     const [show, setShow] = useState(false);
 
     async function logOutUser() {
-        await axios.post('http://localhost:5000/auth/logout')
+        await axios.post('http://localhost:5000/auth/logout', { withCredentials: true })
         .then(() => {
             auth.logOut()
         })

@@ -1,4 +1,5 @@
 const gateKeep = function(req, res, next) {
+    console.log(req.headers)
     if(req.session.passport && req.session.passport.user) {
         next()
     }

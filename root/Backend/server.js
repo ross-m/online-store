@@ -14,7 +14,7 @@ mongoose.connect(db_url, {useNewUrlParser: true, useUnifiedTopology: true})
     .catch((err) => console.log(err))
 
 require('./passport')(app)
-app.use(cors())
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}))
 app.use(express.json())
 app.use('/auth', authRoute)
 app.use('/admin', adminRoute)

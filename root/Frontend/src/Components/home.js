@@ -3,10 +3,24 @@ import {Navbar, NavDropdown, Container, Nav, Table, Col, Dropdown} from "react-b
 import trees from "../trees.svg"
 import { useAuth } from "../State Management/auth"
 import { Login } from "./login"
+import axios from "axios"
+
+axios.defaults.withCredentials = true
 
 function Home() {
     let auth = useAuth()
     const [show, setShow] = useState(false);
+
+    async function logOutUser() {
+        await axios.post('http://localhost:5000/auth/logout')
+        .then(() => {
+            auth.logOut()
+        })
+        .catch((error) => {
+            console.log(error)
+            alert(error)
+        })
+    }
 
     return !auth.user ? (
         <Navbar bg="light" expand="lg">
@@ -143,7 +157,7 @@ function Home() {
 
                         <Dropdown.Menu>
                             <Dropdown.Item href="#/action-1">Cart </Dropdown.Item>
-                            <Dropdown.Item onClick={auth.logOut}>Logout </Dropdown.Item>
+                            <Dropdown.Item onClick={() => logOutUser()}>Logout </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                 </Col>

@@ -3,15 +3,18 @@ import {Navbar, NavDropdown, Container, Nav, Table, Col, Dropdown} from "react-b
 import trees from "../trees.svg"
 import { useAuth } from "../State Management/auth"
 import { Login } from "./login"
+import { Register } from "./register"
 import axios from "axios"
 
+axios.defaults.withCredentials = true
 
 function Home() {
     let auth = useAuth()
-    const [show, setShow] = useState(false);
+    const [showLogin, setShowLogin] = useState(false)
+    const [showRegister, setShowRegister] = useState(false)
 
     async function logOutUser() {
-        await axios.post('http://localhost:5000/auth/logout', { withCredentials: true })
+        await axios.post('http://localhost:5000/auth/logout')
         .then(() => {
             auth.logOut()
         })
@@ -84,9 +87,10 @@ function Home() {
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
-                            <Dropdown.Item onClick={() => setShow(true)}> Login </Dropdown.Item>
-                            <Login show={show} onHide={() => setShow(false)}></Login>
-                            <Dropdown.Item href="#/action-3">Register </Dropdown.Item>
+                            <Dropdown.Item onClick={() => setShowLogin(true)}> Login </Dropdown.Item>
+                            <Login show={showLogin} onHide={() => setShowLogin(false)}></Login>
+                            <Dropdown.Item onClick={() => setShowRegister(true)}> Register </Dropdown.Item>
+                            <Register show={showRegister} onHide={() => setShowRegister(false)}></Register>
                         </Dropdown.Menu>
                     </Dropdown>
                 </Col>

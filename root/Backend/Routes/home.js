@@ -1,11 +1,9 @@
 const express = require('express')
-const passport = require('passport')
 const router = express.Router()
 const Promotion = require('../Models/promotion')
-const gateKeep = require('../Middleware/auth')
+const Product = require('../Models/product')
 
-
-router.get('/', gateKeep, async (req, res, next) => {
+router.get('/', async (req, res, next) => {
     
     const ads = await Promotion.find()
    
@@ -23,9 +21,9 @@ router.get('/', gateKeep, async (req, res, next) => {
 
 
 
-router.get('/Mens', gateKeep, async (req, res, next) => {
+router.get('/Mens', async (req, res, next) => {
     
-    const hits = await Promotion.find({category: /Mens/})
+    const hits = await Product.find({category: /Mens/})
 
     if(hits.length) { 
 
@@ -43,10 +41,10 @@ router.get('/Mens', gateKeep, async (req, res, next) => {
 
 router.get('/Mens/Tops', async (req, res, next) => {
     
-    const hits = await Promotion.find({category: {$regex: 'Mens/Tops/'}})
+    const hits = await Product.find({category: {$regex: 'Mens/Tops/'}})
 
     if(hits.length) { 
-
+        
         return res.status(200).json({message: "Retrieved mens tops!", content: hits})
 
     }   else {
@@ -61,7 +59,7 @@ router.get('/Mens/Tops', async (req, res, next) => {
 
 router.get('/Mens/Tops/Shirts', async (req, res, next) => {
     
-    const hits = await Promotion.find({category: 'Mens/Tops/Shirts'})
+    const hits = await Product.find({category: 'Mens/Tops/Shirts'})
 
     if(hits.length) { 
 
@@ -79,7 +77,7 @@ router.get('/Mens/Tops/Shirts', async (req, res, next) => {
 
 router.get('/Mens/Tops/Hoodies', async (req, res, next) => {
     
-    const hits = await Promotion.find({category: 'Mens/Tops/Hoodies'})
+    const hits = await Product.find({category: 'Mens/Tops/Hoodies'})
     
     if (hits.length) { 
 
@@ -97,7 +95,7 @@ router.get('/Mens/Tops/Hoodies', async (req, res, next) => {
 
 router.get('/Mens/Bottoms', async (req, res, next) => {
     
-    const hits = await Promotion.find({category: {$regex: 'Mens/Bottoms/'}})
+    const hits = await Product.find({category: {$regex: 'Mens/Bottoms/'}})
 
     if(hits.length) { 
 
@@ -115,7 +113,7 @@ router.get('/Mens/Bottoms', async (req, res, next) => {
 
 router.get('/Mens/Bottoms/Shorts', async (req, res, next) => {
     
-    const hits = await Promotion.find({category: 'Mens/Bottoms/Shorts'})
+    const hits = await Product.find({category: 'Mens/Bottoms/Shorts'})
 
     if(hits.length) { 
 
@@ -133,7 +131,7 @@ router.get('/Mens/Bottoms/Shorts', async (req, res, next) => {
 
 router.get('/Mens/Bottoms/Pants', async (req, res, next) => {
     
-    const hits = await Promotion.find({category: 'Mens/Bottoms/Pants'})
+    const hits = await Product.find({category: 'Mens/Bottoms/Pants'})
     
     if (hits.length) { 
 
@@ -151,7 +149,7 @@ router.get('/Mens/Bottoms/Pants', async (req, res, next) => {
 
 router.get('/Womens', async (req, res, next) => {
     
-    const hits = await Promotion.find({category: /Womens/})
+    const hits = await Product.find({category: /Womens/})
 
     if(hits.length) { 
 
@@ -169,7 +167,7 @@ router.get('/Womens', async (req, res, next) => {
 
 router.get('/Womens/Tops', async (req, res, next) => {
     
-    const hits = await Promotion.find({category: {$regex: 'Womens/Tops/'}})
+    const hits = await Product.find({category: {$regex: 'Womens/Tops/'}})
 
     if(hits.length) { 
 
@@ -187,7 +185,7 @@ router.get('/Womens/Tops', async (req, res, next) => {
 
 router.get('/Womens/Tops/Shirts', async (req, res, next) => {
     
-    const hits = await Promotion.find({category: 'Womens/Tops/Shirts'})
+    const hits = await Product.find({category: 'Womens/Tops/Shirts'})
 
     if(hits.length) { 
 
@@ -205,7 +203,7 @@ router.get('/Womens/Tops/Shirts', async (req, res, next) => {
 
 router.get('/Womens/Tops/Sweaters', async (req, res, next) => {
     
-    const hits = await Promotion.find({category: 'Womens/Tops/Sweaters'})
+    const hits = await Product.find({category: 'Womens/Tops/Sweaters'})
     console.log(hits)
     if(hits.length) { 
 
@@ -223,7 +221,7 @@ router.get('/Womens/Tops/Sweaters', async (req, res, next) => {
 
 router.get('/Womens/Bottoms', async (req, res, next) => {
     
-    const hits = await Promotion.find({category: {$regex: 'Womens/Bottoms/'}})
+    const hits = await Product.find({category: {$regex: 'Womens/Bottoms/'}})
 
     if(hits.length) { 
 
@@ -241,7 +239,7 @@ router.get('/Womens/Bottoms', async (req, res, next) => {
 
 router.get('/Womens/Bottoms/Shorts', async (req, res, next) => {
     
-    const hits = await Promotion.find({category: 'Womens/Bottoms/Shorts'})
+    const hits = await Product.find({category: 'Womens/Bottoms/Shorts'})
 
     if(hits.length) { 
 
@@ -259,7 +257,7 @@ router.get('/Womens/Bottoms/Shorts', async (req, res, next) => {
 
 router.get('/Womens/Bottoms/Pants', async (req, res, next) => {
     
-    const hits = await Promotion.find({category: 'Womens/Bottoms/Pants'})
+    const hits = await Product.find({category: 'Womens/Bottoms/Pants'})
     
     if (hits.length) { 
 

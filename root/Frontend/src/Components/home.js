@@ -1,4 +1,4 @@
-import { React, useState, useHistory } from "react"
+import { React, useState, useHistory, Link } from "react"
 import {Navbar, NavDropdown, Container, Nav, Table, Col, Dropdown} from "react-bootstrap"
 import trees from "../trees.svg"
 import { useAuth } from "../State Management/auth"
@@ -39,7 +39,7 @@ function Home() {
                             <Table striped border hover size="sm">
                                 <thead>
                                     <tr>
-                                        <th><Nav.Link href="#Mens/Tops">Tops</Nav.Link></th>
+                                        <th><Nav.Link as={Link} to="/Mens/Tops">Tops</Nav.Link></th>
                                         <th><Nav.Link href="#Mens/Bottoms">Bottoms</Nav.Link></th>
                                     </tr>
                                 </thead>

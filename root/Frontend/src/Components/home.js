@@ -39,7 +39,7 @@ function Home() {
                             <Table striped border hover size="sm">
                                 <thead>
                                     <tr>
-                                        <th><Nav.Link as={Link} to="/Mens/Tops">Tops</Nav.Link></th>
+                                        <th><Nav.Link href="/Mens/Tops">Tops</Nav.Link></th>
                                         <th><Nav.Link href="#Mens/Bottoms">Bottoms</Nav.Link></th>
                                     </tr>
                                 </thead>

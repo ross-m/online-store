@@ -14,11 +14,11 @@ export default function App() {
     <ProvideAuth>
       <Router>
           <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
             <Route path="/Mens/Tops">
               <MensTops />
-            </Route>
-            <Route path="/">
-              <Home />
             </Route>
           </Switch>
       </Router>

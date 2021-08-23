@@ -2,6 +2,7 @@ import { Button, Modal, Form } from "react-bootstrap"
 import { useAuth } from "../State Management/auth";
 import axios from "axios"
 import { useRef } from "react"
+import { loginURL } from "../config_url";
 
 export function Login(props) {
     let auth = useAuth()
@@ -9,7 +10,7 @@ export function Login(props) {
     let pwRef = useRef()
 
     async function signIn() {
-        await axios.post('http://localhost:5000/auth/login',
+        await axios.post(loginURL,
             {
                 email: emailRef.current.value,
                 password: pwRef.current.value

@@ -1,10 +1,11 @@
-import { React, useState } from "react"
+import { React, useState, useHistory } from "react"
 import {Navbar, NavDropdown, Container, Nav, Table, Col, Dropdown} from "react-bootstrap"
 import trees from "../trees.svg"
 import { useAuth } from "../State Management/auth"
 import { Login } from "./login"
 import { Register } from "./register"
-import axios from "axios"
+import axios from "axios" 
+import { logoutURL } from "../config_url"
 
 axios.defaults.withCredentials = true
 
@@ -14,7 +15,7 @@ function Home() {
     const [showRegister, setShowRegister] = useState(false)
 
     async function logOutUser() {
-        await axios.post('http://localhost:5000/auth/logout')
+        await axios.post(logoutURL)
         .then(() => {
             auth.logOut()
         })

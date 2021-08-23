@@ -1,13 +1,14 @@
 import { Button, Modal, Form } from "react-bootstrap"
 import axios from "axios"
 import { useRef } from "react"
+import { registerURL } from "../config_url"
 
 export function Register(props) {
     let emailRef = useRef()
     let pwRef = useRef()
 
     async function registerUser() {
-        await axios.post('http://localhost:5000/auth/register',
+        await axios.post(registerURL,
             {
                 email: emailRef.current.value,
                 password: pwRef.current.value

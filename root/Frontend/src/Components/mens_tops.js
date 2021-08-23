@@ -12,15 +12,15 @@ export default function MensTops() {
         try {
             const res = await axios.get(mensTopsURL)
             const imgs = res.data.content
-
+            
             if(res) {
                 for (let i = 0; i < imgs.length; ++i) {
-                    imgs[i] = 'data:image/jpeg;base64,'+arrayBufferToBase64(imgs[i].image.data)
+                    imgs[i].image.data = 'data:image/jpeg;base64,'+arrayBufferToBase64(imgs[i].image.data)
                 }
             }
             setMensTops(imgs)
         }   catch (err) {
-            alert(err)
+                alert(err)
         }
     }
 
@@ -33,14 +33,13 @@ export default function MensTops() {
             <Row>
                 {mensTops ? mensTops.map(top => (
                   <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={top} />
+                    <Card.Img variant="top" src={top.image.data} />
                     <Card.Body>
-                      <Card.Title>Card Title</Card.Title>
+                      <Card.Title bold>{top.name}</Card.Title>
                       <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
+                        {top.description}
                       </Card.Text>
-                      <Button variant="primary">Go somewhere</Button>
+                      <Button variant="primary">Add to cart</Button>
                     </Card.Body>
                   </Card>
                     )) : 

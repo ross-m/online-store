@@ -2,7 +2,7 @@ import axios from "axios"
 import { mensTopsURL } from "../config_url"
 import { useState, useEffect } from "react"
 import { arrayBufferToBase64 } from "../Misc/binToStrin"
-import { Container, Image, Col, Row, Card, Button } from "react-bootstrap"
+import { Container, Col, Row, Card, Button } from "react-bootstrap"
 
 export default function MensTops() {
 
@@ -32,16 +32,18 @@ export default function MensTops() {
         <Container>
             <Row>
                 {mensTops ? mensTops.map(top => (
-                  <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={top.image.data} />
-                    <Card.Body>
-                      <Card.Title bold>{top.name}</Card.Title>
-                      <Card.Text>
-                        {top.description}
-                      </Card.Text>
-                      <Button variant="primary">Add to cart</Button>
-                    </Card.Body>
-                  </Card>
+                  <Col>
+                    <Card style={{ width: '18rem' }}>
+                        <Card.Img variant="top" src={top.image.data} />
+                        <Card.Body>
+                        <Card.Title bold>{top.name}</Card.Title>
+                        <Card.Text>
+                            {top.description}
+                        </Card.Text>
+                        <Button variant="primary">Add to cart</Button>
+                        </Card.Body>
+                    </Card>
+                  </Col>
                     )) : 
                     <Col xs={6} md={4}>
                         <h2>Empty</h2>

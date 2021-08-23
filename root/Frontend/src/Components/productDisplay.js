@@ -7,10 +7,10 @@ import { useParams } from "react-router-dom"
 
 export default function ProductDisplay() {
 
-    const [mensTops, setMensTops] = useState([])
+    const [prods, setProds] = useState([])
     let path = useParams()
 
-    async function GetMensTops() {
+    async function GetProds() {
         try {
             const res = await axios.get(base + '/' + path.id)
             const imgs = res.data.content
@@ -20,20 +20,20 @@ export default function ProductDisplay() {
                     imgs[i].image.data = 'data:image/jpeg;base64,'+arrayBufferToBase64(imgs[i].image.data)
                 }
             }
-            setMensTops(imgs)
+            setProds(imgs)
         }   catch (err) {
                 alert(err)
         }
     }
 
     useEffect(() => {
-        GetMensTops()
+        GetProds()
     }, [])
 
     return (
         <Container>
             <Row>
-                {mensTops ? mensTops.map(top => (
+                {prods ? prods.map(top => (
                   <Col>
                     <Card style={{ width: '18rem' }}>
                         <Card.Img variant="top" src={top.image.data} />

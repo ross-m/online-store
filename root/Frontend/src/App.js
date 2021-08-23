@@ -5,7 +5,7 @@ import {
   Route
 } from "react-router-dom"
 import Home from "./Components/home.js"
-import MensTops from "./Components/mens_tops"
+import MensTops from "./Components/productDisplay"
 import { ProvideAuth } from "./State Management/auth.js"
 
 
@@ -17,7 +17,7 @@ export default function App() {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route path="/Mens/Tops">
+            <Route path="/:id*">
               <MensTops />
             </Route>
           </Switch>

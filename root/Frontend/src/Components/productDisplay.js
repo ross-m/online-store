@@ -1,16 +1,18 @@
 import axios from "axios"
-import { mensTopsURL } from "../config_url"
+import { base } from "../config_url"
 import { useState, useEffect } from "react"
 import { arrayBufferToBase64 } from "../Misc/binToStrin"
 import { Container, Col, Row, Card, Button } from "react-bootstrap"
+import { useParams } from "react-router-dom"
 
-export default function MensTops() {
+export default function ProductDisplay() {
 
     const [mensTops, setMensTops] = useState([])
-    
+    let path = useParams()
+
     async function GetMensTops() {
         try {
-            const res = await axios.get(mensTopsURL)
+            const res = await axios.get(base + '/' + path.id)
             const imgs = res.data.content
             
             if(res) {

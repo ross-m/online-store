@@ -1,4 +1,4 @@
-const base = 'http://localhost:5000'
+export const base = 'http://localhost:5000'
 export const loginURL = base + '/auth/login'
 export const logoutURL = base + '/auth/logout'
 export const registerURL = base + '/auth/register'

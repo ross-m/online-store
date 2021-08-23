@@ -40,7 +40,7 @@ function Home() {
                                 <thead>
                                     <tr>
                                         <th><Nav.Link href="/Mens/Tops">Tops</Nav.Link></th>
-                                        <th><Nav.Link href="#Mens/Bottoms">Bottoms</Nav.Link></th>
+                                        <th><Nav.Link href="/Mens/Bottoms">Bottoms</Nav.Link></th>
                                     </tr>
                                 </thead>
                                     <tbody>

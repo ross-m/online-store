@@ -1,5 +1,5 @@
 import { React, useState } from "react"
-import {Navbar, NavDropdown, Container, Nav, Table, Row, Col, Dropdown} from "react-bootstrap"
+import {Navbar, NavDropdown, Container, Nav, Table, Row, Col, Dropdown, Button} from "react-bootstrap"
 import trees from "../trees.svg"
 import { useAuth } from "../State Management/auth"
 import { Login } from "./login"
@@ -29,22 +29,18 @@ function Home() {
         <>
             <Navbar bg="light" expand="lg">
                 <Container fluid>
-                    <Col xs={0} fluid="true">
-                        <img src={trees} height={70} alt="some trees"></img>
-                    </Col>
-                    <Col sm={4}>
+                    <Col sm={5}>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="me-auto">
-                            <NavDropdown title="Mens" id="basic-nav-dropdown">
-                                <Table striped border hover size="sm">
-                                    <thead>
-                                        <tr>
-                                            <th><Nav.Link href="/Mens/Tops">Tops</Nav.Link></th>
-                                            <th><Nav.Link href="/Mens/Bottoms">Bottoms</Nav.Link></th>
-                                        </tr>
-                                    </thead>
-                                        <tbody>
+                            <Nav className="me-auto">
+                                <NavDropdown title="Mens" id="basic-nav-dropdown">
+                                    <Table striped border hover size="sm">
+                                        <thead>
+                                            <tr>
+                                                <th><Nav.Link href="/Mens/Tops">Tops</Nav.Link></th>
+                                                <th><Nav.Link href="/Mens/Bottoms">Bottoms</Nav.Link></th>
+                                            </tr>
+                                        </thead>
                                             <tr>
                                                 <td><Nav.Link href="/Mens/Shirts">Shirts</Nav.Link></td>
                                                 <td><Nav.Link href="/Mens/Shorts">Shorts</Nav.Link></td>
@@ -53,18 +49,16 @@ function Home() {
                                                 <td><Nav.Link href="/Mens/Hoodies">Hoodies</Nav.Link></td>
                                                 <td><Nav.Link href="/Mens/Pants">Pants</Nav.Link></td>
                                             </tr>
-                                        </tbody>
-                                </Table>
-                            </NavDropdown>
-                            <NavDropdown title="Womens" id="basic-nav-dropdown">
-                                <Table striped border hover size="sm">
-                                    <thead>
-                                        <tr>
-                                            <th><Nav.Link href="/Womens/Tops">Tops</Nav.Link></th>
-                                            <th><Nav.Link href="/Womens/Bottoms">Bottoms</Nav.Link></th>
-                                        </tr>
-                                    </thead>
-                                        <tbody>
+                                    </Table>
+                                </NavDropdown>
+                                <NavDropdown title="Womens" id="basic-nav-dropdown">
+                                    <Table striped border hover size="sm">
+                                        <thead>
+                                            <tr>
+                                                <th><Nav.Link href="/Womens/Tops">Tops</Nav.Link></th>
+                                                <th><Nav.Link href="/Womens/Bottoms">Bottoms</Nav.Link></th>
+                                            </tr>
+                                        </thead>
                                             <tr>
                                                 <td><Nav.Link href="/Womens/Shirts">Shirts</Nav.Link></td>
                                                 <td><Nav.Link href="/Womens/Shorts">Shorts</Nav.Link></td>
@@ -73,14 +67,17 @@ function Home() {
                                                 <td><Nav.Link href="/Womens/Sweaters">Sweaters</Nav.Link></td>
                                                 <td><Nav.Link href="/Womens/Pants">Pants</Nav.Link></td>
                                             </tr>
-                                        </tbody>
-                                </Table>
-                            </NavDropdown>
-                        </Nav>
+                                    </Table>
+                                </NavDropdown>
+                            </Nav>
                         </Navbar.Collapse>
                     </Col>
-                    <Col sm={5}>
-                        <Navbar.Brand href="/"> E-Store </Navbar.Brand>
+                    <Col sm={6}>
+                        <Navbar.Brand href="/">
+                            <img src={trees} height={70} alt="some trees"></img>
+                                E-Store 
+                            <img src={trees} height={70} alt="some trees"></img>
+                        </Navbar.Brand>
                     </Col>
                     <Col>
                         <Dropdown>
@@ -117,22 +114,18 @@ function Home() {
         <>
             <Navbar bg="light" expand="lg">
                 <Container fluid>
-                    <Col xs={0} fluid="true">
-                        <img src={trees} height={70} alt="some trees"></img>
-                    </Col>
-                    <Col sm={4}>
+                    <Col sm={5}>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="me-auto">
-                            <NavDropdown title="Mens" id="basic-nav-dropdown">
-                                <Table striped border hover size="sm">
-                                    <thead>
-                                        <tr>
-                                            <th><Nav.Link href="/Mens/Tops">Tops</Nav.Link></th>
-                                            <th><Nav.Link href="/Mens/Bottoms">Bottoms</Nav.Link></th>
-                                        </tr>
-                                    </thead>
-                                        <tbody>
+                            <Nav className="me-auto">
+                                <NavDropdown title="Mens" id="basic-nav-dropdown">
+                                    <Table striped border hover size="sm">
+                                        <thead>
+                                            <tr>
+                                                <th><Nav.Link href="/Mens/Tops">Tops</Nav.Link></th>
+                                                <th><Nav.Link href="/Mens/Bottoms">Bottoms</Nav.Link></th>
+                                            </tr>
+                                        </thead>
                                             <tr>
                                                 <td><Nav.Link href="/Mens/Shirts">Shirts</Nav.Link></td>
                                                 <td><Nav.Link href="/Mens/Shorts">Shorts</Nav.Link></td>
@@ -141,18 +134,16 @@ function Home() {
                                                 <td><Nav.Link href="/Mens/Hoodies">Hoodies</Nav.Link></td>
                                                 <td><Nav.Link href="/Mens/Pants">Pants</Nav.Link></td>
                                             </tr>
-                                        </tbody>
-                                </Table>
-                            </NavDropdown>
-                            <NavDropdown title="Womens" id="basic-nav-dropdown">
-                                <Table striped border hover size="sm">
-                                    <thead>
-                                        <tr>
-                                            <th><Nav.Link href="/Womens/Tops">Tops</Nav.Link></th>
-                                            <th><Nav.Link href="/Womens/Bottoms">Bottoms</Nav.Link></th>
-                                        </tr>
-                                    </thead>
-                                        <tbody>
+                                    </Table>
+                                </NavDropdown>
+                                <NavDropdown title="Womens" id="basic-nav-dropdown">
+                                    <Table striped border hover size="sm">
+                                        <thead>
+                                            <tr>
+                                                <th><Nav.Link href="/Womens/Tops">Tops</Nav.Link></th>
+                                                <th><Nav.Link href="/Womens/Bottoms">Bottoms</Nav.Link></th>
+                                            </tr>
+                                        </thead>
                                             <tr>
                                                 <td><Nav.Link href="/Womens/Shirts">Shirts</Nav.Link></td>
                                                 <td><Nav.Link href="/Womens/Shorts">Shorts</Nav.Link></td>
@@ -161,30 +152,25 @@ function Home() {
                                                 <td><Nav.Link href="/Womens/Sweaters">Sweaters</Nav.Link></td>
                                                 <td><Nav.Link href="/Womens/Pants">Pants</Nav.Link></td>
                                             </tr>
-                                        </tbody>
-                                </Table>
-                            </NavDropdown>
-                        </Nav>
+                                    </Table>
+                                </NavDropdown>
+                            </Nav>
                         </Navbar.Collapse>
                     </Col>
-                    <Col sm={5}>
-                        <Navbar.Brand href="/"> E-Store </Navbar.Brand>
+                    <Col sm={6}>
+                        <Navbar.Brand href="/">
+                            <img src={trees} height={70} alt="some trees"></img>
+                                E-Store 
+                            <img src={trees} height={70} alt="some trees"></img>
+                        </Navbar.Brand>
                     </Col>
                     <Col>
-                        <Dropdown>
-                            <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                Account
-                            </Dropdown.Toggle>
-
-                            <Dropdown.Menu>
-                                <Dropdown.Item href="#/action-1">Cart </Dropdown.Item>
-                                <Dropdown.Item onClick={() => logOutUser()}>Logout </Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
+                        <Button variant="outline-danger" onClick={() => logOutUser()}>Log out</Button>
+                        
                     </Col>
                 </Container>
             </Navbar>
-            <Navbar fixed="bottom" expand="lg" variant="dark" bg="dark">
+            <Navbar fixed="bottom" expand="lg" variant="light" bg="light">
                 <Container fluid>
                     <Col xs={2}></Col>
                         <Col>

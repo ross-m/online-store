@@ -5,7 +5,7 @@ import {
   Route
 } from "react-router-dom"
 import Home from "./Components/home.js"
-import MensTops from "./Components/productDisplay"
+import Products from "./Components/productDisplay"
 import { ProvideAuth } from "./State Management/auth.js"
 
 
@@ -13,14 +13,13 @@ export default function App() {
   return (
     <ProvideAuth>
       <Router>
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route path="/:id*">
-              <MensTops />
-            </Route>
-          </Switch>
+        <Route path="/">
+          <Home />
+        </Route>
+        <br></br>
+        <Route path="/:id*">
+          <Products />
+        </Route>
       </Router>
     </ProvideAuth>
   );

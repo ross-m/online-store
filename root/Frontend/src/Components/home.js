@@ -1,5 +1,5 @@
-import { React, useState, useHistory, Link } from "react"
-import {Navbar, NavDropdown, Container, Nav, Table, Col, Dropdown} from "react-bootstrap"
+import { React, useState } from "react"
+import {Navbar, NavDropdown, Container, Nav, Table, Row, Col, Dropdown} from "react-bootstrap"
 import trees from "../trees.svg"
 import { useAuth } from "../State Management/auth"
 import { Login } from "./login"

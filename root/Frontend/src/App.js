@@ -6,6 +6,7 @@ import {
 } from "react-router-dom"
 import Home from "./Components/home.js"
 import Products from "./Components/productDisplay"
+import PromotionWheel from "./Components/promotionWheel.js"
 import { ProvideAuth } from "./State Management/auth.js"
 
 
@@ -15,7 +16,8 @@ export default function App() {
       <Router>
         <Switch>
           <Route exact path="/">
-            <Home />
+            
+            <PromotionWheel/>
           </Route>
           <Route path="/:id*">
             <Home />

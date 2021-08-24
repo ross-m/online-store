@@ -12,7 +12,6 @@ export default function ProductDisplay() {
 
     async function GetProds() {
         try {
-            console.log(path)
             const res = await axios.get(base + '/' + path.id)
             const imgs = res.data.content
             

@@ -1,6 +1,7 @@
 import { React, useState } from "react"
 import {Navbar, NavDropdown, Container, Nav, Table, Row, Col, Dropdown, Button} from "react-bootstrap"
 import trees from "../trees.svg"
+import cart from "../cart.svg"
 import { useAuth } from "../State Management/auth"
 import { Login } from "./login"
 import { Register } from "./register"
@@ -157,7 +158,7 @@ function Home() {
                             </Nav>
                         </Navbar.Collapse>
                     </Col>
-                    <Col sm={6}>
+                    <Col xs={6}>
                         <Navbar.Brand href="/">
                             <img src={trees} height={70} alt="some trees"></img>
                                 E-Store 
@@ -165,23 +166,27 @@ function Home() {
                         </Navbar.Brand>
                     </Col>
                     <Col>
-                        <Button variant="outline-danger" onClick={() => logOutUser()}>Log out</Button>
-                        
+                        <Navbar.Brand href="#/cart">
+                            <img src={cart} height={30} alt="some trees"></img>
+                        </Navbar.Brand>
+                    </Col>
+                    <Col>
+                        <Button variant="outline-danger" onClick={() => logOutUser()}>Logout</Button>
                     </Col>
                 </Container>
             </Navbar>
             <Navbar fixed="bottom" expand="lg" variant="light" bg="light">
                 <Container fluid>
                     <Col xs={2}></Col>
-                        <Col>
-                            <Nav.Link href="#/about"> About </Nav.Link>
-                        </Col>
-                        <Col>
-                            © E-Store 2021
-                        </Col>
-                        <Col>
-                            <Nav.Link href="#/contact"> Contact </Nav.Link>
-                        </Col>
+                    <Col>
+                        <Nav.Link href="#/about"> About </Nav.Link>
+                    </Col>
+                    <Col>
+                        © E-Store 2021
+                    </Col>
+                    <Col>
+                        <Nav.Link href="#/contact"> Contact </Nav.Link>
+                    </Col>
                 </Container>
             </Navbar>
         </>

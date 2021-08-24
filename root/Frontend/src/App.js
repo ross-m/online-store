@@ -13,13 +13,16 @@ export default function App() {
   return (
     <ProvideAuth>
       <Router>
-        <Route path="/">
-          <Home />
-        </Route>
-        <br></br>
-        <Route path="/:id*">
-          <Products />
-        </Route>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/:id*">
+            <Home />
+            <br/>
+            <Products />
+          </Route>
+        </Switch>
       </Router>
     </ProvideAuth>
   );

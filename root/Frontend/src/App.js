@@ -16,7 +16,8 @@ export default function App() {
       <Router>
         <Switch>
           <Route exact path="/">
-            
+            <Home/>
+            <br/>
             <PromotionWheel/>
           </Route>
           <Route path="/:id*">

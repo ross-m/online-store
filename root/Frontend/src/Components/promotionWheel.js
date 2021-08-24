@@ -1,6 +1,6 @@
 import axios from "axios"
 import { promotionURL } from "../config_url"
-import { Carousel } from "react-bootstrap"
+import { Carousel, Row, Col, Container } from "react-bootstrap"
 import { arrayBufferToBase64 } from "../Misc/binToStrin"
 import { useState, useEffect } from "react"
 
@@ -28,24 +28,32 @@ export default function PromotionWheel() {
     }, [])
 
     return (
-        <Carousel fade>
-            {proms ? proms.map((img) => (
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100"
-                        src={img.image.data}
-                        alt="First slide"
-                    />
-                    <Carousel.Caption>
-                        <h3>{img.name}</h3>
-                        <p>{img.description}</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-            )) : 
-            <h1>
-                Welcome to the store!
-            </h1>
-            }
-        </Carousel>
+        <>
+            <Container fluid>
+                <Row xs={3} className="justify-content-md-center">
+                    <Col>
+                        <Carousel fade>
+                            {proms ? proms.map((img) => (
+                                <Carousel.Item>
+                                    <img
+                                        className="d-block w-100"
+                                        src={img.image.data}
+                                        alt="First slide"
+                                    />
+                                    <Carousel.Caption>
+                                        <h3>{img.name}</h3>
+                                        <p>{img.description}</p>
+                                    </Carousel.Caption>
+                                </Carousel.Item>
+                            )) : 
+                            <h1>
+                                Welcome to the store!
+                            </h1>
+                            }
+                        </Carousel>
+                    </Col>
+                </Row>
+            </Container>
+        </>
     )
 }

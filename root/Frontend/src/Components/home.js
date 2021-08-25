@@ -28,47 +28,51 @@ function Home() {
 
     return !auth.user ? (
         <>
-            <Navbar bg="dark" variant="dark">
+            <Navbar collapseOnSelect bg="light" expand="lg">
                 <Container fluid >
                     <Col sm={5}>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="me-auto">
-                                <NavDropdown title="Mens" id="basic-nav-dropdown">
-                                    <Table striped border hover size="sm">
-                                        <thead>
-                                            <tr>
-                                                <th><Nav.Link href="/Mens/Tops">Tops</Nav.Link></th>
-                                                <th><Nav.Link href="/Mens/Bottoms">Bottoms</Nav.Link></th>
-                                            </tr>
-                                        </thead>
-                                            <tr>
-                                                <td><Nav.Link href="/Mens/Shirts">Shirts</Nav.Link></td>
-                                                <td><Nav.Link href="/Mens/Shorts">Shorts</Nav.Link></td>
-                                            </tr>
-                                            <tr>
-                                                <td><Nav.Link href="/Mens/Hoodies">Hoodies</Nav.Link></td>
-                                                <td><Nav.Link href="/Mens/Pants">Pants</Nav.Link></td>
-                                            </tr>
-                                    </Table>
+                                <NavDropdown title="Men's" id="basic-nav-dropdown">
+                                    <Container fluid>
+                                        <Table striped borderless size="md">
+                                            <thead>
+                                                <tr>
+                                                    <th><Nav.Link href="/Mens/Tops">Tops</Nav.Link></th>
+                                                    <th><Nav.Link href="/Mens/Bottoms">Bottoms</Nav.Link></th>
+                                                </tr>
+                                            </thead>
+                                                <tr>
+                                                    <td><Nav.Link href="/Mens/Tops/Shirts">Shirts</Nav.Link></td>
+                                                    <td><Nav.Link href="/Mens/Bottoms/Shorts">Shorts</Nav.Link></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><Nav.Link href="/Mens/Tops/Hoodies">Hoodies</Nav.Link></td>
+                                                    <td><Nav.Link href="/Mens/Bottoms/Pants">Pants</Nav.Link></td>
+                                                </tr>
+                                        </Table>
+                                    </Container>
                                 </NavDropdown>
-                                <NavDropdown title="Womens" id="basic-nav-dropdown">
-                                    <Table striped border hover size="sm">
-                                        <thead>
-                                            <tr>
-                                                <th><Nav.Link href="/Womens/Tops">Tops</Nav.Link></th>
-                                                <th><Nav.Link href="/Womens/Bottoms">Bottoms</Nav.Link></th>
-                                            </tr>
-                                        </thead>
-                                            <tr>
-                                                <td><Nav.Link href="/Womens/Shirts">Shirts</Nav.Link></td>
-                                                <td><Nav.Link href="/Womens/Shorts">Shorts</Nav.Link></td>
-                                            </tr>
-                                            <tr>
-                                                <td><Nav.Link href="/Womens/Sweaters">Sweaters</Nav.Link></td>
-                                                <td><Nav.Link href="/Womens/Pants">Pants</Nav.Link></td>
-                                            </tr>
-                                    </Table>
+                                <NavDropdown title="Women's" id="basic-nav-dropdown">
+                                    <Container fluid bg="success">
+                                        <Table borderless size="md">
+                                            <thead>
+                                                <tr>
+                                                    <th><Nav.Link href="/Womens/Tops">Tops</Nav.Link></th>
+                                                    <th><Nav.Link href="/Womens/Bottoms">Bottoms</Nav.Link></th>
+                                                </tr>
+                                            </thead>
+                                                <tr>
+                                                    <td><Nav.Link href="/Womens/Tops/Shirts">Shirts</Nav.Link></td>
+                                                    <td><Nav.Link href="/Womens/Bottoms/Shorts">Shorts</Nav.Link></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><Nav.Link href="/Womens/Tops/Sweaters">Sweaters</Nav.Link></td>
+                                                    <td><Nav.Link href="/Womens/Bottoms/Pants">Pants</Nav.Link></td>
+                                                </tr>
+                                        </Table>
+                                    </Container>
                                 </NavDropdown>
                             </Nav>
                         </Navbar.Collapse>
@@ -82,7 +86,7 @@ function Home() {
                     </Col>
                     <Col>
                         <Dropdown>
-                            <Dropdown.Toggle variant="success" id="dropdown-basic">
+                            <Dropdown.Toggle variant="dark" id="dropdown-basic">
                                 Account
                             </Dropdown.Toggle>
 
@@ -96,14 +100,14 @@ function Home() {
                     </Col>
                 </Container>
             </Navbar>
-            <Navbar fixed="bottom" variant="dark" bg="dark">
+            <Navbar fixed="bottom" expand="lg" bg="light">
                 <Container fluid>
                     <Col xs={2}></Col>
                         <Col>
                             <Nav.Link href="#/about"> About </Nav.Link>
                         </Col>
                         <Col>
-                            © E-Store 2021
+                            <Navbar.Text>© E-Store 2021</Navbar.Text>
                         </Col>
                         <Col>
                             <Nav.Link href="#/contact"> Contact </Nav.Link>
@@ -119,41 +123,45 @@ function Home() {
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="me-auto">
-                                <NavDropdown title="Mens" id="basic-nav-dropdown">
-                                    <Table striped border hover size="sm">
-                                        <thead>
-                                            <tr>
-                                                <th><Nav.Link href="/Mens/Tops">Tops</Nav.Link></th>
-                                                <th><Nav.Link href="/Mens/Bottoms">Bottoms</Nav.Link></th>
-                                            </tr>
-                                        </thead>
-                                            <tr>
-                                                <td><Nav.Link href="/Mens/Shirts">Shirts</Nav.Link></td>
-                                                <td><Nav.Link href="/Mens/Shorts">Shorts</Nav.Link></td>
-                                            </tr>
-                                            <tr>
-                                                <td><Nav.Link href="/Mens/Hoodies">Hoodies</Nav.Link></td>
-                                                <td><Nav.Link href="/Mens/Pants">Pants</Nav.Link></td>
-                                            </tr>
-                                    </Table>
+                            <NavDropdown title="Men's" id="basic-nav-dropdown">
+                                    <Container fluid>
+                                        <Table striped borderless size="md">
+                                            <thead>
+                                                <tr>
+                                                    <th><Nav.Link href="/Mens/Tops">Tops</Nav.Link></th>
+                                                    <th><Nav.Link href="/Mens/Bottoms">Bottoms</Nav.Link></th>
+                                                </tr>
+                                            </thead>
+                                                <tr>
+                                                    <td><Nav.Link href="/Mens/Tops/Shirts">Shirts</Nav.Link></td>
+                                                    <td><Nav.Link href="/Mens/Bottoms/Shorts">Shorts</Nav.Link></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><Nav.Link href="/Mens/Tops/Hoodies">Hoodies</Nav.Link></td>
+                                                    <td><Nav.Link href="/Mens/Bottoms/Pants">Pants</Nav.Link></td>
+                                                </tr>
+                                        </Table>
+                                    </Container>
                                 </NavDropdown>
-                                <NavDropdown title="Womens" id="basic-nav-dropdown">
-                                    <Table striped border hover size="sm">
-                                        <thead>
-                                            <tr>
-                                                <th><Nav.Link href="/Womens/Tops">Tops</Nav.Link></th>
-                                                <th><Nav.Link href="/Womens/Bottoms">Bottoms</Nav.Link></th>
-                                            </tr>
-                                        </thead>
-                                            <tr>
-                                                <td><Nav.Link href="/Womens/Shirts">Shirts</Nav.Link></td>
-                                                <td><Nav.Link href="/Womens/Shorts">Shorts</Nav.Link></td>
-                                            </tr>
-                                            <tr>
-                                                <td><Nav.Link href="/Womens/Sweaters">Sweaters</Nav.Link></td>
-                                                <td><Nav.Link href="/Womens/Pants">Pants</Nav.Link></td>
-                                            </tr>
-                                    </Table>
+                                <NavDropdown title="Women's" id="basic-nav-dropdown">
+                                    <Container fluid bg="success">
+                                        <Table striped borderless size="md">
+                                            <thead>
+                                                <tr>
+                                                    <th><Nav.Link href="/Womens/Tops">Tops</Nav.Link></th>
+                                                    <th><Nav.Link href="/Womens/Bottoms">Bottoms</Nav.Link></th>
+                                                </tr>
+                                            </thead>
+                                                <tr>
+                                                    <td><Nav.Link href="/Womens/Tops/Shirts">Shirts</Nav.Link></td>
+                                                    <td><Nav.Link href="/Womens/Bottoms/Shorts">Shorts</Nav.Link></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><Nav.Link href="/Womens/Tops/Sweaters">Sweaters</Nav.Link></td>
+                                                    <td><Nav.Link href="/Womens/Bottoms/Pants">Pants</Nav.Link></td>
+                                                </tr>
+                                        </Table>
+                                    </Container>
                                 </NavDropdown>
                             </Nav>
                         </Navbar.Collapse>

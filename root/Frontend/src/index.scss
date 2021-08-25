@@ -1,8 +1,8 @@
-$primary: rgb(255, 255, 255);
-$secondary: white;
-$body-bg: rgb(224, 224, 224);
-$body-color: black;
+$primary: rgb(0, 0, 0);
+$body-bg: rgb(226, 225, 225);
+$body-color: rgb(0, 0, 0);
 $enable-shadows: true;
 $enable-gradients: true;
-$font-family: Oswald;
+
+
 @import "~bootstrap/scss/bootstrap.scss";

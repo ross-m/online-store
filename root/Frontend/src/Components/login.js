@@ -55,7 +55,7 @@ export function Login(props) {
             <Button variant="outline-danger" onClick={props.onHide}>
               Cancel
             </Button>
-            <Button variant="success" onClick={signIn}>
+            <Button variant="dark" onClick={signIn}>
               Login
             </Button>
           </Modal.Footer>

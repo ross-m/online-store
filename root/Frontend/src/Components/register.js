@@ -49,7 +49,7 @@ export function Register(props) {
             <Button variant="outline-danger" onClick={props.onHide}>
               Cancel
             </Button>
-            <Button variant="success" onClick={registerUser}>
+            <Button variant="dark" onClick={registerUser}>
               Register
             </Button>
           </Modal.Footer>

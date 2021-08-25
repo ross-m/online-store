@@ -2,7 +2,7 @@ const multer = require('multer')
 const path = require('path')
 
 const promotionLoader = multer({ 
-
+    
     fileFilter: function (req, file, cb) {
         
         var type = path.extname(file.originalname)

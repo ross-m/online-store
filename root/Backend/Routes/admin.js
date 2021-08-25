@@ -41,7 +41,6 @@ router.post('/add-product', productLoader.single('product-image'), checkProduct,
 router.post('/add-promotion', promotionLoader.single('promotion-image'), async (req, res, next) => {
     
     try {
-        
         const newPromotion = new Promotion({
             name: req.body.name,
             image: req.file.buffer

@@ -28,8 +28,8 @@ function Home() {
 
     return !auth.user ? (
         <>
-            <Navbar bg="light" expand="lg">
-                <Container fluid>
+            <Navbar bg="dark" variant="dark">
+                <Container fluid >
                     <Col sm={5}>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
@@ -96,7 +96,7 @@ function Home() {
                     </Col>
                 </Container>
             </Navbar>
-            <Navbar fixed="bottom" expand="lg" variant="light" bg="light">
+            <Navbar fixed="bottom" variant="dark" bg="dark">
                 <Container fluid>
                     <Col xs={2}></Col>
                         <Col>

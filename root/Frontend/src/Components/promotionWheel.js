@@ -32,7 +32,7 @@ export default function PromotionWheel() {
             <Container fluid>
                 <Row xs={3} className="justify-content-md-center">
                     <Col>
-                        <Carousel fade>
+                        <Carousel>
                             {proms ? proms.map((img) => (
                                 <Carousel.Item>
                                     <img
@@ -40,10 +40,6 @@ export default function PromotionWheel() {
                                         src={img.image.data}
                                         alt="First slide"
                                     />
-                                    <Carousel.Caption>
-                                        <h3>{img.name}</h3>
-                                        <p>{img.description}</p>
-                                    </Carousel.Caption>
                                 </Carousel.Item>
                             )) : 
                             <h1>

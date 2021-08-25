@@ -7,14 +7,18 @@ export function useAuth() {
 }
 
 function useProvideAuth()  {
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState(() => {
+      return localStorage.getItem("user")
+    })
 
     const logIn = cb => {
       setUser(1)
+      localStorage.setItem("user", 1)
     }
 
     const logOut = cb => {
       setUser(null)
+      localStorage.setItem("user", 0)
     }
 
     return {

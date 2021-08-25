@@ -9,7 +9,7 @@ export default function ProductDisplay() {
 
     const [prods, setProds] = useState([])
     let path = useParams()
-
+    
     async function GetProds() {
         try {
             const res = await axios.get(base + '/' + path.id)

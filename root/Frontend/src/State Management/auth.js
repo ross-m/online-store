@@ -17,7 +17,7 @@ function useProvideAuth()  {
     }
 
     const logOut = cb => {
-      setUser(null)
+      setUser(0)
       localStorage.setItem("user", 0)
     }
 

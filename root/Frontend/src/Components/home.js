@@ -21,7 +21,7 @@ function Home() {
             auth.logOut()
         })
         .catch((error) => {
-            console.log(error)
+            auth.logOut()
             alert(error)
         })
     }

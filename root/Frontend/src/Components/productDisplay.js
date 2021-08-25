@@ -40,6 +40,9 @@ export default function ProductDisplay() {
                         <Card.Body>
                         <Card.Title bold>{top.name}</Card.Title>
                         <Card.Text>
+                            {top.price}
+                        </Card.Text>
+                        <Card.Text>
                             {top.description}
                         </Card.Text>
                         <Button variant="primary">Add to cart</Button>

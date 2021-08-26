@@ -7,7 +7,6 @@ import { useParams } from "react-router-dom"
 import { useAuth } from "../State Management/auth"
 
 export default function ProductDisplay() {
-
     const [prods, setProds] = useState([])
     let path = useParams()
     let auth = useAuth()

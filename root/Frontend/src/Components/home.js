@@ -175,9 +175,7 @@ function Home() {
                     </Col>
                     <Col>
                         <Navbar.Brand href="/cart">
-                            <img src={cart} height={30} alt="some trees">
-                            
-                            </img>
+                            <img src={cart} height={30} alt="some trees"></img>
                             {auth.cart.length ? <Badge bg="success">{auth.cart.length}</Badge> : <Badge></Badge>}
                         </Navbar.Brand>
                     </Col>

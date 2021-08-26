@@ -4,23 +4,25 @@ import { useState, useEffect } from "react"
 import { arrayBufferToBase64 } from "../Misc/binToStrin"
 import { Container, Col, Row, Card, Button } from "react-bootstrap"
 import { useParams } from "react-router-dom"
+import { useAuth } from "../State Management/auth"
 
 export default function ProductDisplay() {
 
     const [prods, setProds] = useState([])
     let path = useParams()
-    
+    let auth = useAuth()
+
     async function GetProds() {
         try {
             const res = await axios.get(base + '/' + path.id)
-            const imgs = res.data.content
+            const products = res.data.content
             
             if(res) {
-                for (let i = 0; i < imgs.length; ++i) {
-                    imgs[i].image.data = 'data:image/jpeg;base64,'+arrayBufferToBase64(imgs[i].image.data)
+                for (let i = 0; i < products.length; ++i) {
+                    products[i].image.data = 'data:image/jpeg;base64,'+arrayBufferToBase64(products[i].image.data)
                 }
             }
-            setProds(imgs)
+            setProds(products)
         }   catch (err) {
                 alert(err)
         }
@@ -33,19 +35,19 @@ export default function ProductDisplay() {
     return (
         <Container>
             <Row>
-                {prods ? prods.map(top => (
+                {prods ? prods.map(prod => (
                   <Col>
                     <Card style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src={top.image.data} />
+                        <Card.Img variant="prod" src={prod.image.data} />
                         <Card.Body>
-                        <Card.Title bold>{top.name}</Card.Title>
+                        <Card.Title bold>{prod.name}</Card.Title>
                         <Card.Text>
-                            {top.price}
+                            {prod.price}
                         </Card.Text>
                         <Card.Text>
-                            {top.description}
+                            {prod.description}
                         </Card.Text>
-                        <Button variant="primary">Add to cart</Button>
+                        <Button variant="primary" onClick={() => auth.addToCart(prod)}>Add to cart</Button>
                         </Card.Body>
                     </Card>
                   </Col>

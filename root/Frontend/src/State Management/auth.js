@@ -11,20 +11,44 @@ function useProvideAuth()  {
       return localStorage.getItem("user")
     })
 
-    const logIn = cb => {
+    const [cart, setCart] = useState(() => {
+      return JSON.parse(localStorage.getItem("shopping-cart"))
+    })
+
+    const logIn = () => {
       setUser(1)
       localStorage.setItem("user", 1)
+      localStorage.setItem("shopping-cart", JSON.stringify([]))
     }
 
-    const logOut = cb => {
+    const logOut = () => {
       setUser(0)
       localStorage.setItem("user", 0)
+      localStorage.setItem("shopping-cart", JSON.stringify([]))
+    }
+
+    const addToCart = product => {
+      setCart(prevCart => {
+        localStorage.setItem("shopping-cart", JSON.stringify([...prevCart, product]))
+        return [...prevCart, product]
+      })
+    }
+
+    const removeFromCart = product => {
+        let newCart = cart.filter(prod => {
+          return prod._id !== product._id
+        })
+        localStorage.setItem("shopping-cart", JSON.stringify(newCart))
+        setCart(newCart)
     }
 
     return {
-        user, 
+        user,
+        cart, 
         logIn,
-        logOut
+        logOut,
+        addToCart,
+        removeFromCart
     }
 }
 

@@ -1,5 +1,5 @@
 import { React, useState } from "react"
-import {Navbar, NavDropdown, Container, Nav, Table, Row, Col, Dropdown, Button} from "react-bootstrap"
+import {Navbar, NavDropdown, Container, Nav, Table, Badge, Col, Dropdown, Button} from "react-bootstrap"
 import trees from "../trees.svg"
 import cart from "../cart.svg"
 import { useAuth } from "../State Management/auth"
@@ -25,8 +25,8 @@ function Home() {
             alert(error)
         })
     }
-
-    return !auth.user ? (
+    
+    return auth.user == "0" ? (
         <>
             <Navbar collapseOnSelect bg="light" expand="lg">
                 <Container fluid >
@@ -174,8 +174,11 @@ function Home() {
                         </Navbar.Brand>
                     </Col>
                     <Col>
-                        <Navbar.Brand href="#/cart">
-                            <img src={cart} height={30} alt="some trees"></img>
+                        <Navbar.Brand href="/cart">
+                            <img src={cart} height={30} alt="some trees">
+                            
+                            </img>
+                            {auth.cart.length ? <Badge bg="success">{auth.cart.length}</Badge> : <Badge></Badge>}
                         </Navbar.Brand>
                     </Col>
                     <Col>

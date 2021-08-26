@@ -4,5 +4,19 @@ $body-color: rgb(0, 0, 0);
 $enable-shadows: true;
 $enable-gradients: true;
 
+.photo {
+    width: auto;
+    height: 300px;
+}
+
+.cart-photo {
+    width: 100px;
+    height: 100px;
+}
+
+.product-card {
+    width: auto;
+    height: 550px;
+}
 
 @import "~bootstrap/scss/bootstrap.scss";

@@ -10,19 +10,20 @@ export default function Cart() {
             <Container>
                 <hr/>
                 {   auth.cart ? auth.cart.map(prod => (
+                        <div>
                         <Row>
                             <Col><h1>{prod.name}</h1></Col>
-                            <Col><h2>{prod.description}</h2></Col>
                             <Col><h3>{prod.price}</h3></Col>
-                            <Col><Image src={prod.image.data} roundedCircle /></Col>
+                            <Col><Image className="cart-photo" src={prod.image.data} roundedCircle /></Col>
                         </Row>
+                        <hr/>
+                        </div>
                     ))
                 : 
                     <Row className="justify-content-center">
                         Cart is empty
                     </Row>
                 } 
-                <hr/>
             </Container>
         : 
             <Redirect to="/"></Redirect>

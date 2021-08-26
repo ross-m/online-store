@@ -104,7 +104,7 @@ function Home() {
                 <Container fluid>
                     <Col xs={2}></Col>
                         <Col>
-                            <Nav.Link href="#/about"> About </Nav.Link>
+                            <Nav.Link href="#/about"> About Us </Nav.Link>
                         </Col>
                         <Col>
                             <Navbar.Text>© E-Store 2021</Navbar.Text>
@@ -188,7 +188,7 @@ function Home() {
                 <Container fluid>
                     <Col xs={2}></Col>
                     <Col>
-                        <Nav.Link href="#/about"> About </Nav.Link>
+                        <Nav.Link href="#/about"> About Us </Nav.Link>
                     </Col>
                     <Col>
                         © E-Store 2021

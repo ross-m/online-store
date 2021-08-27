@@ -1,4 +1,6 @@
 # online-store
+![Store demo](storeDemo.gif)
+
 I created this project because I wanted to improve my web development skills. Particularly, I wanted to learn React. Most of my time was spent on the frontend of the application and this is reflected in the simplicity of the application. I chose not to implement a payment system because a) I have nothing to sell and b) I was worried about the liability this might expose me to. 
 
 ## Description

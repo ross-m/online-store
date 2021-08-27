@@ -36,7 +36,7 @@ export default function ProductDisplay() {
             <Row>
                 {prods ? prods.map(prod => (
                   <Col>
-                    <Card style={{ width: '18rem' }} className="product-card">
+                    <Card border="primary" style={{ width: '18rem' }} className="product-card">
                         <Card.Img variant="prod" className="photo" src={prod.image.data} />
                         <Card.Body>
                         <Card.Title bold>{prod.name}</Card.Title>

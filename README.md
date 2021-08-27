@@ -21,4 +21,6 @@ general layout of the project is as follows:
   * Stores user sessions, products, promotions, and users
   
 ## Installation Guide
-`git clone `
+`git clone https://github.com/ross-m/online-store.git
+ cd online-store
+`

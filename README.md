@@ -21,16 +21,17 @@ general layout of the project is as follows:
   * Stores user sessions, products, promotions, and users
   
 ## Installation Guide
+1. Clone the repo
 ```
 $ git clone https://github.com/ross-m/online-store.git
 $ cd online-store
 ```
-* Backend
+2. Start the server
  ```
  $ cd root/Backend
  $ nodemon server.js
  ```
-* Frontend
+3. Start the front end application
  ```
  $ cd root/Frontend
  $ npm start

@@ -10,7 +10,6 @@ import Products from "./Components/productDisplay"
 import PromotionWheel from "./Components/promotionWheel.js"
 import { ProvideAuth } from "./State Management/auth.js"
 
-
 export default function App() {
   return (
     <ProvideAuth>
@@ -30,6 +29,7 @@ export default function App() {
             <Home />
             <br/>
             <Products />
+            <br/><br/><br/><br/>
           </Route>
         </Switch>
       </Router>
